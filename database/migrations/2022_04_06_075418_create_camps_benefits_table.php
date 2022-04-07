@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateUsersTable extends Migration
+class CreateCampsBenefitsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,19 +13,20 @@ class CreateUsersTable extends Migration
      */
     public function up()
     {
-        Schema::create('users', function (Blueprint $table) {
+        Schema::create('camps_benefits', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('email')->unique();
-            $table->timestamp('email_verified_at')->nullable();
-            $table->string('password')->nullable();
-            $table->string('avatar')->nullable();
-            $table->string('occupation')->nullable();
-            $table->boolean('is_admin')->default(false);
-            $table->rememberToken();
-            $table->timestamps();
-            $table->softDeletes();
 
+            //menyesuikan table yang akan dituju untuk membuat relasi #cara 1
+            $table->bigInteger('camp_id')->unsigned();
+
+            // #cara 2 digunakan bila ada kasus 2 relasi lebih enak makai yang ini
+            //$table->foreignId('camp_id')->constrained();
+
+            $table->string('name');
+            $table->timestamps();
+
+            //method pertama untuk membuat relasi antar table
+            $table->foreign('camp_id')->references('id')->on('camps')->onDelete('cascade');
             
             //Selesai buat migrasi langsung buat model buat apa saja field nantinya yang bisa di isi
             //Jangan lupa kalau ada soft deletes ditambahkan di model
@@ -39,6 +40,6 @@ class CreateUsersTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('users');
+        Schema::dropIfExists('camps_benefits');
     }
 }
