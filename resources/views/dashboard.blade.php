@@ -1,8 +1,6 @@
-@extends('layouts.app')
+@extends('layouts.navigation')
 
 @section('title')
     Dashboard Page
 @endsection
-
-@include('components.navbar')
 
