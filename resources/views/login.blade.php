@@ -23,7 +23,7 @@
                 </a>
             </p>
             <div class="back-to-home">
-                <a href="{{ route('/') }}" class=" btn-btn-primary">Back To Home</a>
+                <a href="{{ route('welcome') }}" class=" btn-btn-primary">Back To Home</a>
             </div>
             <img src="{{ asset('images/people.png') }}" class="people" alt="">
         </div>
