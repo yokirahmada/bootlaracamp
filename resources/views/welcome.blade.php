@@ -3,6 +3,7 @@
 @section('title')
     Homepage
 @endsection
+
 @include('components.navbar')
 
 @section('content')
@@ -268,7 +269,7 @@
                                     <div class="clear"></div>
                                 </div>
                                 <p>
-                                    <a href="{{ route('chekout') }}" class="btn btn-master btn-primary w-100 mt-3">
+                                    <a href="{{ route('chekout.create', 'gila-belajar') }}" class="btn btn-master btn-primary w-100 mt-3">
                                         Take This Plan
                                     </a>
                                 </p>
@@ -299,7 +300,7 @@
                                     <div class="divider"></div>
                                 </div>
                                 <div class="item-benefit-pricing mb-4">
-                                    <img src="{{ asset('images/ic_check.svg') }} alt="">
+                                    <img src="{{ asset('images/ic_check.svg') }}" alt="">
                                     <p>
                                         Offline Course Videos
                                     </p>
@@ -314,7 +315,7 @@
                                     <div class="clear"></div>
                                 </div>
                                 <p>
-                                    <a href="{{ route('chekout') }}" class="btn btn-master btn-secondary w-100 mt-3">
+                                    <a href="{{ route('chekout.create', 'baru-mulai') }}" class="btn btn-master btn-secondary w-100 mt-3">
                                         Start With This Plan
                                     </a>
                                 </p>
