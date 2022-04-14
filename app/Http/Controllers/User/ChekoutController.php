@@ -8,6 +8,7 @@ use App\Models\Camp;
 use App\Models\Chekout;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+Use App\Http\Requests\User\Chekout\Store;
 
 
 
@@ -28,8 +29,12 @@ class ChekoutController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create(Camp $camp)
+    public function create(Camp $camp, Request $request)
     {
+       if ($camp->isRegistered) {
+           $request->session()->flash('Error', "You already registered on Bootcamp {$camp->title} .");
+           return redirect(route('dashboard'));
+       }
         
          return view('chekout/create-chekout', [
              'camp' => $camp
@@ -42,8 +47,9 @@ class ChekoutController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request, Camp $camp)
+    public function store(Store $request, Camp $camp)
     {
+
         //Mapping request data
         $data = $request->all();
         $data ['user_id'] = Auth::id();

@@ -21,6 +21,9 @@
                 </div>
             </div>
             <div class="row my-5">
+
+                @include('components.alert')
+
                 <table class="table" >
                     <thead >
                         <tr class="align-middle">
@@ -64,7 +67,7 @@
                         @empty
 
                         <td colspan="5">
-                            <h3>NO DATA</h3>
+                            <h3 class="text-center">NO DATA</h3>
                         </td>
                             
                         @endforelse
